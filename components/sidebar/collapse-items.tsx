@@ -88,7 +88,7 @@ export const CollapseItems = ({icon, items, title}: Props) => {
                <SidebarItem
                key={index}
                title={item.name}
-               icon=''
+               icon='⁜'
                isActive={router.pathname === item.href}
                href={item.href}
             />
