@@ -11,19 +11,12 @@ interface Props {
 export const NavbarWrapper = ({children}: Props) => {
    const collapseItems = [
       'Profile',
-      'Dashboard',
-      'Activity',
-      'Analytics',
-      'System',
-      'Deployments',
-      'My Settings',
-      'Team Settings',
-      'Help & Feedback',
       'Log Out',
    ];
    return (
       <Box
          css={{
+            
             position: 'relative',
             display: 'flex',
             flexDirection: 'column',
@@ -35,6 +28,7 @@ export const NavbarWrapper = ({children}: Props) => {
          <Navbar
             isBordered
             css={{
+               $$navbarBlurBackgroundColor: "rgb(1, 57, 89)",
                'borderBottom': '1px solid $border',
                'justifyContent': 'space-between',
                'width': '100%',
@@ -61,6 +55,7 @@ export const NavbarWrapper = ({children}: Props) => {
                hideIn={'md'}
                css={{
                   width: '100%',
+                  color: '#fff'
                }}
             >
                SITE NAME

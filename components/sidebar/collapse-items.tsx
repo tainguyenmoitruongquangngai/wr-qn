@@ -1,9 +1,10 @@
-import {Collapse, Text, Link} from '@nextui-org/react';
+import {Collapse, Text} from '@nextui-org/react';
 import React, {useState} from 'react';
 import {ChevronUpIcon} from '../icons/sidebar/chevron-up-icon';
 import {Flex} from '../styles/flex';
 import {SidebarItem} from './sidebar-item';
 import {useRouter} from 'next/router';
+import { Box } from '../styles/box';
 
 interface Item {
    name: string;
@@ -13,87 +14,72 @@ interface Props {
    icon: React.ReactNode;
    title: string;
    items: Item[];
+   isActive? : boolean;
 }
 
-export const CollapseItems = ({icon, items, title}: Props) => {
-   const [open, setOpen] = useState(false);
+export const CollapseItems = ({icon, items, isActive, title}: Props) => {
    const router = useRouter();
-   const handleToggle = () => setOpen(!open);
-   return (
-      <Flex
-         css={{
-            gap: '$6',
-            height: '100%',
-            alignItems: 'center',
-            cursor: 'pointer',
-         }}
-         align={'center'}
-      >
-         <Collapse
-            title={
-               <Flex
-                  css={{
-                     'gap': '$6',
-                     'width': '100%',
-                     'py': '$5',
-                     'px': '$7',
-                     'borderRadius': '8px',
-                     'transition': 'all 0.15s ease',
-                     '&:active': {
-                        transform: 'scale(0.98)',
-                     },
-                     '&:hover': {
-                        bg: '$accents2',
-                     },
-                  }}
-                  justify={'between'}
-                  onClick={handleToggle}
-               >
-                  <Flex css={{gap: '$6'}}>
-                     {icon}
-                     <Text
-                        span
-                        weight={'normal'}
-                        size={'$base'}
-                        css={{
-                           color: '$accents9',
-                        }}
-                     >
-                        {title}
-                     </Text>
-                  </Flex>
 
-                  <ChevronUpIcon
+   return (
+      <Collapse
+         expanded={isActive}
+         title={
+            <Flex
+               css={{
+                  'gap': '$6',
+                  'width': '12 0%',
+                  'py': '$5',
+                  'px': '$7',
+                  'borderRadius': '0',
+                  'transition': 'all 0.15s ease',
+                  '&:active': {
+                     transform: 'scale(0.98)',
+                  },
+                  '&:hover': {
+                     bg: 'linear-gradient(98deg, #00a2ff, #003858 94%);',
+                  }
+               }}
+               justify={'between'}
+            >
+               <Flex css={{gap: '$6'}}>
+                  {icon}
+                  <Text
+                     span
+                     weight={'normal'}
+                     size={'$base'}
                      css={{
-                        transition: 'transform 0.3s ease',
-                        transform: open ? 'rotate(-180deg)' : 'rotate(0deg)',
+                        color: '#fff',
                      }}
-                  />
+                  >
+                     {title}
+                  </Text>
                </Flex>
-            }
-            css={{
-               'width': '100%',
-               '& .nextui-collapse-view': {
-                  p: '0',
-               },
-               '& .nextui-collapse-content': {
-                  marginTop: '$1',
-                  padding: '0px',
-               },
-            }}
-            divider={false}
-            showArrow={false}
-         >
-            {items.map((item, index) => (
-               <SidebarItem
+            </Flex>
+         }
+         css={{
+            'width': '100%',
+            '& .nextui-collapse-view': {
+               p: '0',
+            },
+            '& .nextui-collapse-content': {
+               marginTop: '$1',
+               padding: '0px',
+            },
+         }}
+      >
+         {items.map((item, index) => (
+            <Flex
                key={index}
+               direction={'column'}
+            >
+               <SidebarItem
                title={item.name}
-               icon='⁜'
+               icon='◉'
                isActive={router.pathname === item.href}
                href={item.href}
-            />
-            ))}
-         </Collapse>
-      </Flex>
+               />
+            </Flex>
+         ))}
+      </Collapse>
    );
 };

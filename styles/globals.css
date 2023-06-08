@@ -10,7 +10,7 @@ body {
 }
 
 .license__box{
-   padding: 0 10px;
+   padding: 8px;
 }
 .license__box .nextui-c-lfcDHB{
    padding: 5px 0 !important;
@@ -32,7 +32,6 @@ body {
    display: block !important;
 }
 .license__box .box__text{
-   text-align: center;
    white-space: nowrap;
    width: 100%;
 }
@@ -40,4 +39,8 @@ body {
    width: 60px;
    height: 60px;
    background-color: blueviolet;
+}
+
+.nextui-collapse path{
+   stroke: #fff !important;
 }
