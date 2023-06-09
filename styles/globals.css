@@ -31,7 +31,7 @@ body {
 .license__box .box__item > div > div{
    display: block !important;
 }
-.license__box .box__text{
+.box__text{
    white-space: nowrap;
    width: 100%;
 }
@@ -43,4 +43,14 @@ body {
 
 .nextui-collapse path{
    stroke: #fff !important;
+}
+
+.w-100{
+   width: 100%;
+}
+.h-100{
+   height: 100%;
+}
+.text-nowrap{
+   white-space: nowrap;
 }
